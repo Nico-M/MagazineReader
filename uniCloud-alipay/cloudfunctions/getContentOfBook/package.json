@@ -1,6 +1,9 @@
 {
   "name": "getContentOfBook",
-  "dependencies": {},
+  "dependencies": {
+    "domhandler": "^5.0.3",
+    "htmlparser2": "^9.1.0"
+  },
   "extensions": {
     "uni-cloud-jql": {}
   }

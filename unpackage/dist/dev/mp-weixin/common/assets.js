@@ -1,5 +1,11 @@
 "use strict";
-const _imports_0 = "/assets/bg_top.84172c45.png";
+const _imports_0$3 = "/static/logo.png";
+const _imports_0$2 = "/assets/bg_top.84172c45.png";
 const _imports_1 = "/assets/app_update_close.91137466.png";
-exports._imports_0 = _imports_0;
+const _imports_0$1 = "/static/jian.png";
+const _imports_0 = "/static/play.png";
+exports._imports_0 = _imports_0$3;
+exports._imports_0$1 = _imports_0$2;
+exports._imports_0$2 = _imports_0$1;
+exports._imports_0$3 = _imports_0;
 exports._imports_1 = _imports_1;

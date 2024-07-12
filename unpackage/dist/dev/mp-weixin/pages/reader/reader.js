@@ -3,7 +3,7 @@ const common_vendor = require("../../common/vendor.js");
 const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   __name: "reader",
   setup(__props) {
-    const getChapterService = common_vendor.Ws.importObject("getContentOfBook");
+    const getChapterService = common_vendor.Vs.importObject("getContentOfBook");
     const bookInitial = common_vendor.reactive({
       bookId: "",
       title: ""
@@ -21,14 +21,12 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
         title: bookInitial.title
       });
       const chaptersRes = await getChapterService.getChaptersOfBook(bookInitial.bookId);
-      if (chaptersRes.code == 0 && chaptersRes.data) {
-        const {
-          chapterList,
-          chapterContent
-        } = chaptersRes.data;
-        allChapters.value = chapterList;
-        readingChapter.value = chapterContent;
-      }
+      const {
+        chapterList,
+        chapterContent
+      } = chaptersRes;
+      allChapters.value = chapterList;
+      readingChapter.value = chapterContent;
     });
     return (_ctx, _cache) => {
       return {
@@ -37,5 +35,4 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/reader/reader.vue"]]);
-wx.createPage(MiniProgramPage);
+wx.createPage(_sfc_main);

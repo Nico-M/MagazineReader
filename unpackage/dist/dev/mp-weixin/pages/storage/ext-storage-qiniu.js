@@ -50,7 +50,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "文件上传中..."
       });
-      const uniCloudStorageExtCo = common_vendor.Ws.importObject("ext-storage-co", {
+      const uniCloudStorageExtCo = common_vendor.Vs.importObject("ext-storage-co", {
         customUI: true
       });
       const uploadFileOptionsRes = await uniCloudStorageExtCo.getUploadFileOptions({
@@ -74,7 +74,7 @@ const _sfc_main = {
           };
           console.log(res);
           if (options.isPrivate) {
-            const uniCloudStorageExtCo2 = common_vendor.Ws.importObject("ext-storage-co", {
+            const uniCloudStorageExtCo2 = common_vendor.Vs.importObject("ext-storage-co", {
               customUI: true
             });
             await uniCloudStorageExtCo2.setFilePrivate({
@@ -105,7 +105,7 @@ const _sfc_main = {
       });
     },
     async getTempFileURL() {
-      const uniCloudStorageExtCo = common_vendor.Ws.importObject("ext-storage-co");
+      const uniCloudStorageExtCo = common_vendor.Vs.importObject("ext-storage-co");
       let res = await uniCloudStorageExtCo.getTempFileURL({
         fileList: [this.privateFileID]
       });
@@ -138,5 +138,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     e: common_vendor.o(($event) => $options.getTempFileURL())
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/storage/ext-storage-qiniu.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

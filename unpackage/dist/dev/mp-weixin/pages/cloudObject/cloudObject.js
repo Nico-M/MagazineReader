@@ -1,8 +1,8 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
 let canUse = true, cloudObjectDemo;
-if (common_vendor.Ws.importObject) {
-  cloudObjectDemo = common_vendor.Ws.importObject("cloud-object-demo");
+if (common_vendor.Vs.importObject) {
+  cloudObjectDemo = common_vendor.Vs.importObject("cloud-object-demo");
 } else {
   canUse = false;
 }
@@ -134,5 +134,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o((...args) => $options.useCommon && $options.useCommon(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/cloudObject/cloudObject.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

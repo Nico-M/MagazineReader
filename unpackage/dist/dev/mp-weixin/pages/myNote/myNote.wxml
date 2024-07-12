@@ -1,1 +1,1 @@
-<view class="text-center uni-py-2"><image src="/static/logo.png" class="avatar"></image></view>
+<view class="text-center uni-py-2"><image src="{{a}}" class="avatar"></image></view>

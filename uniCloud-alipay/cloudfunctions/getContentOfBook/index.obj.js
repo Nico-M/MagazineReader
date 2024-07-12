@@ -1,58 +1,115 @@
 // 云对象教程: https://uniapp.dcloud.net.cn/uniCloud/cloud-obj
 // jsdoc语法提示教程：https://ask.dcloud.net.cn/docs/#//ask.dcloud.net.cn/article/129
 const db = uniCloud.databaseForJQL();
+const {
+	log
+} = require("console");
+const htmlparser2 = require("htmlparser2");
+const { DomHandler } = require('domhandler');
+
+// 定义标签转换规则
+const tagMap = {
+  'div': 'view',
+  'h1': 'view',
+  'p': 'text'
+};
+// 解析 HTML 字符串
+
+
+async function parseHTMLString(htmlString) {
+	const tagMapping = [
+		'h1',
+		'h2',
+		'h3',
+		'h4',
+		'h5',
+		'h6',
+	];
+	return new Promise((resolve, reject) => {
+		let parsedText = "";
+		const handler = new DomHandler((error, dom) => {
+		  if (error) {
+		    console.error(error);
+		    return;
+		  }
+		
+		  // 递归处理 DOM 节点
+		  const processNode = (node) => {
+		    if (node.type === 'tag') {
+		      // 转换标签
+		      // if (tagMap[node.name]) {
+		      //   node.name = tagMap[node.name];
+		      // }
+			  if(tagMapping.includes(node.name)){
+				}
+		
+		      // 去除 <img> 标签
+		      if (node.name === 'img') {
+		        return null;
+		      }
+		
+		      // 递归处理子节点
+		      if (node.children) {
+		        node.children = node.children.map(processNode).filter(Boolean);
+		      }
+		    }
+		    return node;
+		  };
+		
+		  const newDom = dom.map(processNode).filter(Boolean);
+		
+		  // 将新的 DOM 转换回 HTML 字符串
+		  const html = htmlparser2.DomUtils.getOuterHTML(newDom);
+		  resolve(html);
+		});
+		const parser = new htmlparser2.Parser(handler);
+		parser.write(htmlString);
+		parser.end();
+
+	});
+}
 
 module.exports = {
-	_before: function() { // 通用预处理器
-
+	_before: function() {
+		// 通用预处理器
 	},
-	/**
-	 * method1方法描述
-	 * @param {string} param1 参数1描述
-	 * @returns {object} 返回值描述
-	 */
-	/* 
-	method1(param1) {
-		// 参数校验，如无参数则不需要
-		if (!param1) {
-			return {
-				errCode: 'PARAM_IS_NULL',
-				errMsg: '参数不能为空'
-			}
-		}
-		// 业务逻辑
-		
-		// 返回结果
-		return {
-			param1 //请根据实际需要返回值
-		}
-	}
-	*/
-	async getChaptersOfBook(bookId, chapterId='') {
+	async getChaptersOfBook(bookId, chapterId = "") {
 		let chapterContent = null;
 		let chapterList = [];
 		if (!chapterId) {
-			const allChapterListRes = await db.collection('book_chapters').where({
-				book_id: 'the_economist_2026_06_02'
-			}).field('chapter_id').orderBy('order').get();
-			if(allChapterListRes.code==0){
-				chapterList = allChapterListRes.data.map(v => v.chapter_id);
-				
+			const allChapterListRes = await db
+				.collection("book_chapters")
+				.where({
+					book_id: "the_economist_2026_06_02",
+				})
+				.field("chapter_id")
+				.orderBy("order")
+				.get();
+			if (allChapterListRes.code == 0) {
+				chapterList = allChapterListRes.data.map((v) => v.chapter_id);
+
 				chapterId = chapterList[0];
 			}
 		}
-		const chapterRes = await db.collection('book_chapters').where({
-			book_id: 'the_economist_2026_06_02',
-			chapter_id: chapterId
-		}).orderBy('order').get();
-		
-		if(chapterRes.code==0){
+		const chapterRes = await db
+			.collection("book_chapters")
+			.where({
+				book_id: "the_economist_2026_06_02",
+				chapter_id: chapterId,
+			})
+			.orderBy("order")
+			.get();
+
+		if (chapterRes.code == 0) {
 			chapterContent = chapterRes.data[0];
+			const rawContent = chapterContent.text;
+			const fileStr = await parseHTMLString(rawContent);
+			chapterContent.text = fileStr;
 		}
-		
+
 		return {
 			chapterList,
-			chapterContent
+			chapterContent,
 		};
-	}
-}
+	},
+};

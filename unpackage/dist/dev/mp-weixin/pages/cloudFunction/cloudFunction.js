@@ -9,7 +9,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "add",
         data: {
           product: "uniCloud",
@@ -35,7 +35,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "remove"
       }).then((res) => {
         common_vendor.index.hideLoading();
@@ -57,7 +57,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "update",
         data: {
           product: "uni-app",
@@ -83,7 +83,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "get"
       }).then((res) => {
         common_vendor.index.hideLoading();
@@ -103,7 +103,7 @@ const _sfc_main = {
     },
     useCommon() {
       console.log("请确保自己已经阅读并按照公用模块文档操作 https://uniapp.dcloud.io/uniCloud/cf-common");
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "use-common"
       }).then((res) => {
         common_vendor.index.hideLoading();
@@ -138,5 +138,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o((...args) => $options.toRedisPage && $options.toRedisPage(...args))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/cloudFunction/cloudFunction.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

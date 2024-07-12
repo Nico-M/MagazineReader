@@ -17,7 +17,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const searchValue = common_vendor.ref("");
     const magazines = common_vendor.ref([]);
-    const extractService = common_vendor.Ws.importObject("extractEpub");
+    const extractService = common_vendor.Vs.importObject("extractEpub");
     const search = async () => {
       const resourceListResponse = await extractService.searchEpubResourceByKey(searchValue.value);
       if (resourceListResponse.code !== 0) {
@@ -80,5 +80,4 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/explore/explore.vue"]]);
-wx.createPage(MiniProgramPage);
+wx.createPage(_sfc_main);

@@ -1,6 +1,6 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
-const db = common_vendor.Ws.database();
+const db = common_vendor.Vs.database();
 const alertCode = () => "../../../components/alertCode/alertCode.js";
 const uniNoticeBar = () => "../../../uni_modules/uni-notice-bar/components/uni-notice-bar/uni-notice-bar.js";
 const _sfc_main = {
@@ -218,5 +218,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     f: common_vendor.o($options.changePermission)
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-ccd54dd8"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/clientDB/permission-field-simple/permission-field-simple.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-ccd54dd8"]]);
 wx.createPage(MiniProgramPage);

@@ -124,7 +124,7 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     p: $props.kl * 8 * -1 + "px"
   }));
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-f02b795a"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/components/show-code/show-code.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-f02b795a"]]);
 wx.createComponent(Component);
 const L1VzZXJzL25pY28vRG9jdW1lbnRzL0hCdWlsZGVyUHJvamVjdHMvTWFnYXppbmVSZWFkZXIvY29tcG9uZW50cy9zaG93LWNvZGUvc2hvdy1jb2RlLnZ1ZQ = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null

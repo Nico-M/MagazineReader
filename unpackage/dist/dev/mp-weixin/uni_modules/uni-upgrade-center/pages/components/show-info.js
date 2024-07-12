@@ -51,5 +51,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     h: `${$props.width}px`
   } : {});
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dfd997fc"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/uni_modules/uni-upgrade-center/pages/components/show-info.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-dfd997fc"]]);
 wx.createComponent(Component);

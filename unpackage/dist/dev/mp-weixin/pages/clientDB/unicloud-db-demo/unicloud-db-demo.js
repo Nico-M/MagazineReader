@@ -244,5 +244,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-49f96def"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/clientDB/unicloud-db-demo/unicloud-db-demo.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-49f96def"]]);
 wx.createPage(MiniProgramPage);

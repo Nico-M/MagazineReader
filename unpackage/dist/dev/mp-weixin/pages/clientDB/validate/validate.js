@@ -141,5 +141,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     A: $data.current === 2
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-745068e6"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/clientDB/validate/validate.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-745068e6"]]);
 wx.createPage(MiniProgramPage);

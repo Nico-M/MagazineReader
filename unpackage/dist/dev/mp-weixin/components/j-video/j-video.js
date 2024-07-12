@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const common_assets = require("../../common/assets.js");
 var videoContext;
 const _sfc_main = {
   mounted() {
@@ -82,15 +83,16 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     a: $props.width,
     b: $props.height,
     c: $options.posterUrl,
-    d: $props.width,
-    e: $props.height,
-    f: common_vendor.o((...args) => $options.play && $options.play(...args)),
-    g: $props.src,
-    h: common_vendor.o((...args) => $options.timeupdate && $options.timeupdate(...args)),
-    i: common_vendor.o((...args) => $options.fullscreenchange && $options.fullscreenchange(...args)),
-    j: $props.width,
-    k: $props.height
+    d: common_assets._imports_0$3,
+    e: $props.width,
+    f: $props.height,
+    g: common_vendor.o((...args) => $options.play && $options.play(...args)),
+    h: $props.src,
+    i: common_vendor.o((...args) => $options.timeupdate && $options.timeupdate(...args)),
+    j: common_vendor.o((...args) => $options.fullscreenchange && $options.fullscreenchange(...args)),
+    k: $props.width,
+    l: $props.height
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-c6e2e182"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/components/j-video/j-video.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-c6e2e182"]]);
 wx.createComponent(Component);

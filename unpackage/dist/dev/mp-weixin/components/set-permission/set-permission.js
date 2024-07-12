@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const common_assets = require("../../common/assets.js");
 const _sfc_main = {
   data() {
     return {
@@ -44,7 +45,7 @@ const _sfc_main = {
         common_vendor.index.hideLoading();
         return false;
       }
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "user-center",
         data: {
           action: "login",
@@ -72,7 +73,7 @@ const _sfc_main = {
   },
   methods: {
     async logout() {
-      return await common_vendor.Ws.callFunction({
+      return await common_vendor.Vs.callFunction({
         name: "user-center",
         data: {
           action: "logout"
@@ -99,10 +100,11 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: 170 * $data.activeIndex + "rpx",
     d: $data.showGuide
   }, $data.showGuide ? {
-    e: common_vendor.o(($event) => $data.showGuide = false)
+    e: common_vendor.o(($event) => $data.showGuide = false),
+    f: common_assets._imports_0$2
   } : {}, {
-    f: 170 * $data.roles.length + "rpx"
+    g: 170 * $data.roles.length + "rpx"
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-6d1b39f8"], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/components/set-permission/set-permission.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-6d1b39f8"]]);
 wx.createComponent(Component);

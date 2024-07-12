@@ -3,7 +3,7 @@ const common_vendor = require("../../../../common/vendor.js");
 const uni_modules_uniUpgradeCenter_pages_mixin_version_add_detail_mixin = require("../mixin/version_add_detail_mixin.js");
 const uni_modules_uniUpgradeCenter_pages_utils = require("../utils.js");
 const showInfo = () => "../components/show-info.js";
-const db = common_vendor.Ws.database();
+const db = common_vendor.Vs.database();
 db.command;
 const dbCollectionName = uni_modules_uniUpgradeCenter_pages_utils.appVersionListDbName;
 const _sfc_main = {
@@ -390,5 +390,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/uni_modules/uni-upgrade-center/pages/version/detail.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

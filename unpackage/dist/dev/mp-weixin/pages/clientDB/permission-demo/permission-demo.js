@@ -1,7 +1,7 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
 const js_sdk_validator_permissionTest = require("../../../js_sdk/validator/permission-test.js");
-const db = common_vendor.Ws.database();
+const db = common_vendor.Vs.database();
 db.command;
 const dbCollectionName = "permission-test";
 function getValidator(fields) {
@@ -288,5 +288,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     B: common_vendor.o($options.changePermission)
   });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/clientDB/permission-demo/permission-demo.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

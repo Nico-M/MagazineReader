@@ -1,6 +1,6 @@
 <template>
 	<scroll-view class="uni-pa-8">
-		<view v-html="(readingChapter && readingChapter.text) ||''"></view>
+		<view class="uni-pr-30" v-html="(readingChapter && readingChapter.text) ||''"></view>
 	</scroll-view>
 </template>
 
@@ -41,12 +41,10 @@
 			title: bookInitial.title
 		});
 		const chaptersRes = await getChapterService.getChaptersOfBook(bookInitial.bookId);
-		if (chaptersRes.code == 0 && chaptersRes.data) {
-			const { chapterList,
-				chapterContent } = (chaptersRes.data);
-			allChapters.value = chapterList;
-			readingChapter.value = chapterContent;
-		}
+		const { chapterList,
+			chapterContent } = chaptersRes;
+		allChapters.value = chapterList;
+		readingChapter.value = chapterContent;
 
 	})
 </script>

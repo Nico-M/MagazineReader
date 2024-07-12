@@ -427,5 +427,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     X: common_vendor.s($options.boxStyle)
   });
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createComponent(Component);

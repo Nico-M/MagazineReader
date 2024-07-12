@@ -1,6 +1,6 @@
 "use strict";
 const common_vendor = require("../../../common/vendor.js");
-const db = common_vendor.Ws.database();
+const db = common_vendor.Vs.database();
 const _sfc_main = {
   data() {
     return {
@@ -359,5 +359,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     J: common_vendor.o(($event) => $options.removeAllData2TestDb())
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/clientDB/clientDB-api/clientDB-api.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

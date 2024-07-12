@@ -11,7 +11,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "处理中..."
       });
-      const secureNetworkObject = common_vendor.Ws.importObject("secure-network-object", {
+      const secureNetworkObject = common_vendor.Vs.importObject("secure-network-object", {
         secretMethods: {
           "get": secretType
         }
@@ -38,5 +38,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     e: common_vendor.o(($event) => $options.getBySecretType("response"))
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/secure-network/cloud-object.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

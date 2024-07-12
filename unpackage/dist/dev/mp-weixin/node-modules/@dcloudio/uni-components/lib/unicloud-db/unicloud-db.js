@@ -266,7 +266,7 @@ const _sfc_main = {
           title: loadingTitle
         });
       }
-      let db = common_vendor.Ws.database(this.spaceInfo);
+      let db = common_vendor.Vs.database(this.spaceInfo);
       if (action) {
         db = db.action(action);
       }
@@ -338,7 +338,7 @@ const _sfc_main = {
           title: loadingTitle
         });
       }
-      let db = common_vendor.Ws.database(this.spaceInfo);
+      let db = common_vendor.Vs.database(this.spaceInfo);
       if (action) {
         db = db.action(action);
       }
@@ -365,7 +365,7 @@ const _sfc_main = {
       });
     },
     getTemp(isTemp = true) {
-      let db = common_vendor.Ws.database(this.spaceInfo);
+      let db = common_vendor.Vs.database(this.spaceInfo);
       if (this.action) {
         db = db.action(this.action);
       }
@@ -487,7 +487,7 @@ const _sfc_main = {
           title: loadingTitle
         });
       }
-      const db = common_vendor.Ws.database(this.spaceInfo);
+      const db = common_vendor.Vs.database(this.spaceInfo);
       const dbCmd = db.command;
       let exec = db;
       if (action) {
@@ -549,5 +549,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-components/lib/unicloud-db/unicloud-db.vue"]]);
+const Component = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createComponent(Component);

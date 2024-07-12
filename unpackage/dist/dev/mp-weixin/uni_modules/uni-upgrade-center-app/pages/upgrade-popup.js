@@ -240,7 +240,7 @@ const _sfc_main = {
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return common_vendor.e({
     a: common_vendor.t($data.title),
-    b: common_assets._imports_0,
+    b: common_assets._imports_0$1,
     c: common_vendor.t($data.subTitle),
     d: common_vendor.t($data.contents),
     e: $options.isAppStore
@@ -276,5 +276,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     z: common_vendor.o((...args) => $options.closeUpdate && $options.closeUpdate(...args))
   } : {});
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/uni_modules/uni-upgrade-center-app/pages/upgrade-popup.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

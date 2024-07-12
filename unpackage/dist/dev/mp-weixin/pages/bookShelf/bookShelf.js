@@ -17,7 +17,7 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
   setup(__props) {
     const rawBooks = common_vendor.reactive([]);
     common_vendor.onMounted(() => {
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "getMetaOfRawBook"
       }).then((res) => {
         console.log(res);
@@ -50,5 +50,4 @@ const _sfc_main = /* @__PURE__ */ common_vendor.defineComponent({
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/bookShelf/bookShelf.vue"]]);
-wx.createPage(MiniProgramPage);
+wx.createPage(_sfc_main);

@@ -11,7 +11,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "文件上传中..."
       });
-      common_vendor.Ws.chooseAndUploadFile({
+      common_vendor.Vs.chooseAndUploadFile({
         type: "image",
         onChooseFile: (res) => {
           console.log(res);
@@ -112,7 +112,7 @@ const _sfc_main = {
       common_vendor.index.showLoading({
         title: "文件上传中..."
       });
-      common_vendor.Ws.uploadFile({
+      common_vendor.Vs.uploadFile({
         ...options,
         onUploadProgress(e) {
           console.log(e);
@@ -158,5 +158,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     c: common_vendor.o(($event) => $options.chooseAndUploadFile())
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/storage/space-storage.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);

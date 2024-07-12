@@ -43,7 +43,7 @@ const _sfc_main = {
           icon: "none"
         });
       }
-      common_vendor.Ws.callFunction({
+      common_vendor.Vs.callFunction({
         name: "redis-test",
         data: {
           action,
@@ -94,5 +94,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     p: common_vendor.sr("alertCode", "7ea89cfd-2")
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "/Users/nico/Documents/HBuilderProjects/MagazineReader/pages/cloudFunction/redis/redis.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render]]);
 wx.createPage(MiniProgramPage);
