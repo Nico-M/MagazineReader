@@ -1,0 +1,27 @@
+{
+	"bsonType": "object",
+	"required": [],
+	"permission": {
+		"read": true,
+		"create": false,
+		"update": false,
+		"delete": false
+	},
+	"properties": {
+		"_id": {
+			"description": "ID，系统自动生成"
+		},
+		"bookId":{
+			"bsonType": "string"
+		},
+		"createTime":{
+			"bsonType": "timestamp"
+		},
+		"url":{
+			"bsonType": "string"
+		},
+		"name":{
+			"bsonType": "string"
+		}
+	}
+}

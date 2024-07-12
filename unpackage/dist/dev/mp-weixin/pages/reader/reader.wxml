@@ -1,0 +1,1 @@
+<scroll-view class="uni-pa-8"><view><rich-text nodes="{{a}}"/></view></scroll-view>
