@@ -40,7 +40,8 @@ async function parseHTMLString(htmlString) {
 		      // if (tagMap[node.name]) {
 		      //   node.name = tagMap[node.name];
 		      // }
-			  if(tagMapping.includes(node.name)){
+			  if(node.name === 'p'){
+				  node.attribs.class=[node.attribs.class,"text"].join(' ');
 				}
 		
 		      // 去除 <img> 标签

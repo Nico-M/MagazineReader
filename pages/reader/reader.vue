@@ -1,6 +1,6 @@
 <template>
 	<scroll-view class="uni-pa-8">
-		<view class="uni-pr-30" v-html="(readingChapter && readingChapter.text) ||''"></view>
+		<view class="reader-container" v-html="(readingChapter && readingChapter.text) ||''"></view>
 	</scroll-view>
 </template>
 
@@ -50,5 +50,17 @@
 </script>
 
 <style>
-	.te_section_title {}
+	.reader-container {
+		padding-right: 2rem;
+	}
+	.text{
+		font-size: 1.2rem;
+		margin-top: 0.5rem;
+		margin-bottom: 0.5rem;
+		line-height: 22px;
+		color: #333;
+	}
+	.link_navbar{
+		display: none;
+	}
 </style>
