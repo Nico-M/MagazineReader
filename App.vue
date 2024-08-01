@@ -12,7 +12,7 @@
       // #ifdef H5
       //const VConsole = require('@/common/js/vconsole.min.js')
       //new VConsole()
-      // #endif
+		// #endif
     },
     onShow: function() {
       console.log('App Show')
@@ -41,4 +41,7 @@
   }
 
   /* #endif */
+  body {
+	  font-family:  Georgia, TimesNewRoman, "Times New Roman", Times, serif
+  }
 </style>

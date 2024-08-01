@@ -1,0 +1,7 @@
+{
+  "name": "syncGithubFileList",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

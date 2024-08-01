@@ -5,6 +5,7 @@ const EPub = require('./epub');
 const db = uniCloud.databaseForJQL();
 const path = require('path');
 const fs = require('fs');
+const utils = require('utils')
 
 const extractAsync = async (url) => {
 	const {fileContent} = await uniCloud.downloadFile({fileID:url})
@@ -112,5 +113,12 @@ module.exports = {
    async searchEpubResourceByKey(key){
 	   const rawResource = await db.collection('raw_books').get();
 	   return rawResource;
+   },
+   async getCoverList(){
+	   const covers = await db.collection('edition_weekly')
+	   .limit(5)
+	   	.get();
+		
+		return covers.data.map(item=>utils.transformToCamelCase(item));
    }
 }

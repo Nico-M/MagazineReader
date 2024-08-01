@@ -1,7 +1,8 @@
 {
   "name": "extractEpub",
   "dependencies": {
-    "epub": "^1.2.1"
+    "epub": "^1.2.1",
+    "utils": "file:../common/utils"
   },
   "extensions": {
     "uni-cloud-jql": {}

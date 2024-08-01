@@ -1,10 +1,12 @@
 <template>
 	<view class="uni-pt-1">
 		<uni-grid :column="2" :showBorder="false">
-			<uni-grid-item v-for="book in rawBooks" :key="book.bookId"> 
-				<uni-card @click="navigateToReader(book)">
+			
+			<uni-grid-item v-for="book in rawBooks" :key="book.bookId" >  
+				<view class="uni-pa-4" @tap="()=>navigateToReader(book)">
+					<image style="width: 100%;" src="https://env-00jxgx7alot1.normal.cloudstatic.cn/books/covers/20240622_DE_AP.jpg" alt="" />
 					<text class="break-word">{{book.title}}</text>
-				</uni-card>
+				</view>
 			</uni-grid-item>
 		</uni-grid>
 	</view>
@@ -35,8 +37,9 @@
 	})
 	
 	const navigateToReader = (params: RawBookInfo)=>{
+		console.log('test');
 		const url =  `/pages/reader/reader?bookId=${params.bookId}&title=${encodeURIComponent(params.title)}`;
-	
+		console.log(url);
 		uni.navigateTo({
 			url
 		})

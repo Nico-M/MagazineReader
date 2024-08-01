@@ -166,8 +166,6 @@
 			 * 完成并提交
 			 */
 			submit() {
-				console.log("formData", this.formData);
-				console.log('rules', this.rules);
 				this.$refs.form.validate()
 					.then(res => {
 						let {
@@ -182,7 +180,6 @@
 								password,
 								captcha
 							}).then(e => {
-								console.log(e);
 								uni.navigateBack()
 							})
 							.catch(e => {
@@ -195,11 +192,9 @@
 					}).catch(errors=>{
 						let key = errors[0].key
 						if(key == 'code'){
-							console.log(this.$refs.shortCode);
 							return this.$refs.shortCode.focusSmsCodeInput = true
 						}
 						key = key.replace(key[0], key[0].toUpperCase())
-						console.log(key,'focus'+key);
 						this['focus'+key] = true
 					})
 			},
@@ -208,11 +203,11 @@
 					url: '/uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email'
 				})
 			},
-      backLogin () {
-        uni.redirectTo({
-          url: '/uni_modules/uni-id-pages/pages/login/login-withpwd'
-        })
-      }
+			backLogin () {
+				uni.redirectTo({
+					url: '/uni_modules/uni-id-pages/pages/login/login-withpwd'
+				})
+			}
 		}
 	}
 </script>

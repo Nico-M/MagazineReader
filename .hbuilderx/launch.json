@@ -10,6 +10,9 @@
             "h5" : {
                 "launchtype" : "local"
             },
+            "mp-alipay" : {
+                "launchtype" : "local"
+            },
             "mp-weixin" : {
                 "launchtype" : "local"
             },

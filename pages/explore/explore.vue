@@ -2,13 +2,19 @@
 	<view>
 		<uni-search-bar @confirm="search" :focus="true" v-model="searchValue" placeholder="Search Your Magazines"
 			@clear="clear" />
-		<uni-list>
-			<uni-list-item v-for="item in magazines" :key="item.id" :title="item.title"
-				@click="extractBook" />
-		</uni-list>
-		<view v-for="item in magazines" :key="item.id" 
+		<!-- <uni-list>
+			<uni-list-item v-for="item in magazines" :key="item.id" :title="item.title" @click="extractBook" />
+		</uni-list> -->
+		<!-- <view v-for="item in magazines" :key="item.id" 
 			@click="extractBook(item.url,item.id)" >
-			{{item.title}}</view>
+			{{item.title}}</view> -->
+		<view class="uni-pa-8">
+			<view class="uni-mb-4" v-for="cover in coverList" :key="cover.cover_url">
+				<cust-card :item="cover"></cust-card>
+			</view>
+			
+		</view>
+
 	</view>
 </template>
 
@@ -30,9 +36,19 @@
 		bookId : string
 	}[];
 
+	interface CoverInfo {
+		cover_url : string,
+		title : string,
+		date : string,
+		version : string,
+		cover_url_preview : string
+	}
+
 	const searchValue = ref('');
 
 	const magazines = ref<{ id : string; title : string, url : string }[]>([]);
+	
+	const coverList = ref<CoverInfo[]>([]);
 
 	const extractService = uniCloud.importObject('extractEpub')
 
@@ -59,21 +75,24 @@
 
 	const extractBook = async (url : string, id : string) => {
 		console.log('start');
-		const result = await extractService.extract(id,url);
-		if(result.errCode==0){
+		const result = await extractService.extract(id, url);
+		if (result.errCode == 0) {
 			uni.showToast({
-				icon:"success",
-				title:result.errMsg
+				icon: "success",
+				title: result.errMsg
 			})
 		}
 
 	}
 
-	onReady(() => {
-		console.log('onReady')
+	onReady(async () => {
+		const coverRes = await extractService.getCoverList<CoverInfo[]>();
+		
+		coverList.value = coverRes;
+			
 	})
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>

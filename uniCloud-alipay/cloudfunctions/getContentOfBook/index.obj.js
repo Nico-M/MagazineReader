@@ -5,13 +5,14 @@ const {
 	log
 } = require("console");
 const htmlparser2 = require("htmlparser2");
-const { DomHandler } = require('domhandler');
+const {
+	DomHandler
+} = require('domhandler');
 
 // 定义标签转换规则
 const tagMap = {
-  'div': 'view',
-  'h1': 'view',
-  'p': 'text'
+	'div': 'view',
+	'a': 'uni-link',
 };
 // 解析 HTML 字符串
 
@@ -28,40 +29,54 @@ async function parseHTMLString(htmlString) {
 	return new Promise((resolve, reject) => {
 		let parsedText = "";
 		const handler = new DomHandler((error, dom) => {
-		  if (error) {
-		    console.error(error);
-		    return;
-		  }
-		
-		  // 递归处理 DOM 节点
-		  const processNode = (node) => {
-		    if (node.type === 'tag') {
-		      // 转换标签
-		      // if (tagMap[node.name]) {
-		      //   node.name = tagMap[node.name];
-		      // }
-			  if(node.name === 'p'){
-				  node.attribs.class=[node.attribs.class,"text"].join(' ');
+			if (error) {
+				console.error(error);
+				return;
+			}
+
+			// 递归处理 DOM 节点
+			const processNode = (node) => {
+				if (node.type === 'tag') {
+					// 转换标签
+					// if (tagMapping.includes(node.name)) {
+					// 	node.name = 'view';
+					// 	node.attribs.class = [node.attribs.class, node.name].join(' ');
+					// } else if (node.name === 'div') {
+					// 	node.name = 'view';
+					// 	// node.attribs.class=[node.attribs.class,"text"].join(' ');
+					// } else if (node.name === 'a') {
+					// 	node.name = 'uni-link';
+					// 	node.attribs.class = [node.attribs.class, "link"].join(' ');
+					// } else if (node.name === 'b') {
+					// 	node.name = 'text';
+					// 	node.attribs.class = [node.attribs.class, "bold"].join(' ');
+					// } else if (node.name === 'small') {
+					// 	node.name = 'text';
+					// 	node.attribs.class = [node.attribs.class, "small"].join(' ');
+					// } else {
+					// 	node.name = 'text';
+					// }
+
+					// 去除 <img> 标签
+					if (node.name === 'img') {
+						return null;
+					}
+					
+					log(node);
+
+					// 递归处理子节点
+					if (node.children) {
+						node.children = node.children.map(processNode).filter(Boolean);
+					}
 				}
-		
-		      // 去除 <img> 标签
-		      if (node.name === 'img') {
-		        return null;
-		      }
-		
-		      // 递归处理子节点
-		      if (node.children) {
-		        node.children = node.children.map(processNode).filter(Boolean);
-		      }
-		    }
-		    return node;
-		  };
-		
-		  const newDom = dom.map(processNode).filter(Boolean);
-		
-		  // 将新的 DOM 转换回 HTML 字符串
-		  const html = htmlparser2.DomUtils.getOuterHTML(newDom);
-		  resolve(html);
+				return node;
+			};
+
+			const newDom = dom.map(processNode).filter(Boolean);
+
+			// 将新的 DOM 转换回 HTML 字符串
+			const html = htmlparser2.DomUtils.getOuterHTML(newDom);
+			resolve(html);
 		});
 		const parser = new htmlparser2.Parser(handler);
 		parser.write(htmlString);
@@ -103,9 +118,9 @@ module.exports = {
 
 		if (chapterRes.code == 0) {
 			chapterContent = chapterRes.data[0];
-			const rawContent = chapterContent.text;
-			const fileStr = await parseHTMLString(rawContent);
-			chapterContent.text = fileStr;
+			// const rawContent = chapterContent.text;
+			// const fileStr = await parseHTMLString(rawContent);
+			// chapterContent.text = rawContent;
 		}
 
 		return {

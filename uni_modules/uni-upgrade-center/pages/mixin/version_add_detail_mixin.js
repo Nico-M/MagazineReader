@@ -1,10 +1,11 @@
 import {
 	validator,
 	enumConverter
-} from '@/uni_modules/uni-upgrade-center/js_sdk/validator/opendb-app-versions.js';
+} from '@/js_sdk/validator/opendb-app-versions.js';
 
 const platform_iOS = 'iOS';
 const platform_Android = 'Android';
+const db = uniCloud.database();
 
 function getValidator(fields) {
 	let reuslt = {}
@@ -17,12 +18,12 @@ function getValidator(fields) {
 }
 
 export const fields =
-	'appid,name,title,contents,platform,type,version,min_uni_version,url,stable_publish,is_silently,is_mandatory,create_date'
+	'appid,name,title,contents,platform,type,version,min_uni_version,url,stable_publish,is_silently,is_mandatory,create_date,store_list'
 
 export default {
 	data() {
 		return {
-			labelWidth: '80px',
+			labelWidth: '100px',
 			enableiOSWgt: true, // 是否开启iOS的wgt更新
 			silentlyContent: '静默更新：App升级时会在后台下载wgt包并自行安装。新功能在下次启动App时生效',
 			mandatoryContent: '强制更新：App升级弹出框不可取消',
@@ -41,6 +42,7 @@ export default {
 				"title": "",
 				"contents": "",
 				"platform": [],
+				"store_list": [],
 				"type": "",
 				"version": "",
 				"min_uni_version": "",
@@ -50,28 +52,29 @@ export default {
 			},
 			formOptions: {
 				"platform_localdata": [{
-						"value": "Android",
-						"text": "安卓"
-					},
-					{
-						"value": "iOS",
-						"text": "苹果"
-					}
+					"value": "Android",
+					"text": "安卓"
+				},
+				{
+					"value": "iOS",
+					"text": "苹果"
+				}
 				],
 				"type_localdata": [{
-						"value": "native_app",
-						"text": "原生App安装包"
-					},
-					{
-						"value": "wgt",
-						"text": "App资源包"
-					}
+					"value": "native_app",
+					"text": "原生App安装包"
+				},
+				{
+					"value": "wgt",
+					"text": "App资源包"
+				}
 				]
 			},
 			rules: {
-				...getValidator(["appid", "contents", "platform", "type", "version", "min_uni_version", "url",
-					"stable_publish",
-					"title", "name", "is_silently", "is_mandatory"
+				...getValidator([
+					"appid", "contents", "platform", "type",
+					"version", "min_uni_version", "url", "stable_publish",
+					"title", "name", "is_silently", "is_mandatory", "store_list"
 				])
 			}
 		}
@@ -101,6 +104,17 @@ export default {
 		}
 	},
 	methods: {
+		getStoreList(appid) {
+			return db.collection('opendb-app-list')
+				.where({
+					appid
+				})
+				.get()
+				.then(res => {
+					const data = res.result.data[0]
+					return data ? data.store_list || [] : []
+				})
+		},
 		packageUploadSuccess(res) {
 			uni.showToast({
 				icon: 'success',
@@ -110,22 +124,23 @@ export default {
 			this.preUrl = this.formData.url
 			this.formData.url = res.tempFilePaths[0]
 		},
+		deleteFile(fileList) {
+			return this.$request('deleteFile', {
+				fileList
+			}, {
+				functionName: 'uni-upgrade-center'
+			})
+		},
 		async packageDelete(res) {
 			if (!this.hasPackage) return;
-			let [deleteRes] = await this.$request('deleteFile', {
-				fileList: [res.tempFilePath]
-			}, {
-				functionName: 'upgrade-center'
+			await this.deleteFile([res.tempFilePath])
+			uni.showToast({
+				icon: 'success',
+				title: '删除成功',
+				duration: 800
 			})
-			if (deleteRes.success) {
-				uni.showToast({
-					icon: 'success',
-					title: '删除成功',
-					duration: 800
-				})
-				this.formData.url = this.preUrl
-				this.$refs.form.clearValidate('url')
-			}
+			this.formData.url = this.preUrl
+			this.$refs.form.clearValidate('url')
 		},
 		selectFile() {
 			if (this.hasPackage) {
@@ -164,6 +179,30 @@ export default {
 				uni_platform: uni_platform ? uni_platform : this.uni_platform,
 				create_env: 'uni-stat',
 				stable_publish: false
+			}
+		},
+		toUrl(url){
+			// #ifdef H5
+			window.open(url);
+			// #endif
+			// #ifndef H5
+			uni.showToast({
+				title: '请在浏览器中打开',
+				icon: 'none'
+			});
+			// #endif
+		},
+		getCloudStorageConfig(){
+			return uni.getStorageSync('uni-admin-cloud-storage-config') || {};
+		},
+		setCloudStorageConfig(data={}){
+			uni.setStorageSync('uni-admin-cloud-storage-config', data);
+		},
+		// 临时方法，后面会优化
+		setCloudStorage(data){
+			// uniCloud.setCloudStorage 不是标准的API，临时挂载在uniCloud对象上的，后面会优化
+			if (typeof uniCloud.setCloudStorage === "function") {
+				uniCloud.setCloudStorage(data);
 			}
 		}
 	}
