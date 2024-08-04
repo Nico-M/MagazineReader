@@ -61,6 +61,9 @@ async function parseHTMLString(htmlString) {
 					if (node.name === 'img') {
 						return null;
 					}
+					if (node.name === 'figure') {
+						return null;
+					}
 					
 					log(node);
 
@@ -118,9 +121,9 @@ module.exports = {
 
 		if (chapterRes.code == 0) {
 			chapterContent = chapterRes.data[0];
-			// const rawContent = chapterContent.text;
-			// const fileStr = await parseHTMLString(rawContent);
-			// chapterContent.text = rawContent;
+			const rawContent = chapterContent.text;
+			const fileStr = await parseHTMLString(rawContent);
+			chapterContent.text = rawContent;
 		}
 
 		return {

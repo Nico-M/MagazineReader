@@ -1,6 +1,6 @@
 <template>
 	<scroll-view class="uni-pa-8 uv-content">
-		<uv-parse v-if="!!readingChapter" :content="readingChapter.text"></uv-parse>
+		<uv-parse v-if="!!readingChapter" :selectable="true" :content="readingChapter.text"></uv-parse>
 	</scroll-view>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<uni-search-bar @confirm="search" :focus="true" v-model="searchValue" placeholder="Search Your Magazines"
+		<uni-search-bar @confirm="search" v-model="searchValue" placeholder="Search Your Magazines"
 			@clear="clear" />
 		<!-- <uni-list>
 			<uni-list-item v-for="item in magazines" :key="item.id" :title="item.title" @click="extractBook" />
@@ -12,7 +12,6 @@
 			<view class="uni-mb-4" v-for="cover in coverList" :key="cover.cover_url">
 				<cust-card :item="cover"></cust-card>
 			</view>
-			
 		</view>
 
 	</view>
